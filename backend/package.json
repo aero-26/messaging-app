@@ -1,0 +1,19 @@
+{
+  "name": "chat-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for simple chatting app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsx --env-file=.env --watch src/index.ts"
+  },
+  "author": "aero",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.3"
+  }
+}
