@@ -5,12 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npx tsx --env-file=.env --watch src/index.ts"
+    "dev": "npx tsx --env-file=.env --watch index.ts"
   },
   "author": "aero",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "http-status-codes": "^2.3.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
