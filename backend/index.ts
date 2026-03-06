@@ -1,8 +1,11 @@
 import express from "express";
 import StatusCodes from "http-status-codes";
 import router from "./src/routes";
+import { connectDB } from "./src/config/db";
 const PORT = process.env.PORT;
 const app = express();
+
+connectDB();
 
 app.get("/ping", (req, res) => {
   res.status(StatusCodes.ACCEPTED).send("pong");
