@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
+@theme {
+  --color-dark-notificationColor: #40d169;
+  --color-dark-backgroundColor: #0a0a0a;
+  --color-dark-sendBubble: #145345;
+  --color-dark-receiveBubble: #363636;
+  --color-dark-fontPrimary: #ffffff;
+  --color-dark-fontSecondary: #767676;
+  --color-light-notificationColor: #40d169;
+  --color-light-backgroundColor: #ffffff;
+  --color-light-sendBubble: #e3fdd4;
+  --color-light-receiveBubble: #ffffff;
+  --color-light-fontPrimary: #0a0a0a;
+  --color-light-fontSecondary: #767676;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
