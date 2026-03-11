@@ -13,5 +13,3 @@ export const useThemeSwitcher = () => {
 
   return { themeColor, toggleTheme };
 };
-
-// console.log(themeColor);
