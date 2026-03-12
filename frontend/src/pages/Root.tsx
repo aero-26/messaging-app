@@ -4,8 +4,6 @@ import { Button } from "@mui/material";
 import axios from "axios";
 
 const Root = () => {
-  const { themeColor, toggleTheme } = useThemeSwitcher();
-
   const [data, setData] = useState("");
 
   useEffect(() => {
@@ -30,10 +28,6 @@ const Root = () => {
     <div>
       Root
       <div>{data}</div>
-      <Button variant="contained" onClick={toggleTheme}>
-        HELLO
-      </Button>
-      <h1>{themeColor}</h1>
     </div>
   );
 };
