@@ -1,10 +1,10 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Root from "./pages/Root";
-import Home from "./pages/Home";
 import { useThemeSwitcher } from "./components/ThemeSwitcher";
-import { Button, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import Icon from "@mui/material/Icon";
+import Auth from "./pages/Auth";
+import Home from "./pages/Home";
 
 function App() {
   const { bgImg, themeColor, toggleTheme } = useThemeSwitcher();
@@ -12,26 +12,26 @@ function App() {
   return (
     <div
       style={{ backgroundImage: `url(${bgImg})` }}
-      className={`bg-no-repeat bg-cover h-dvh text-${themeColor}-fontPrimary`}
+      className={`bg-no-repeat bg-cover h-dvh text-${themeColor}-font-primary flex-col flex justify-center`}
     >
-      <Button variant="contained" onClick={toggleTheme}>
-        HELLO
-      </Button>
+      <div className=" hidden bg-(--dark-background-color) text-(--dark-font-primary)"></div>
       <Tooltip title="Switch Modes">
         <div
-          className={`inline-block bg-${themeColor}-backgroundColor rounded-full flex justify-center items-center cursor-pointer`}
+          className={`inline-block backdrop-blur-2xl text-(--${themeColor}-font-primary) rounded-full cursor-pointer m-2 absolute top-0 right-0`}
         >
-          <Icon className={`material-symbols-outlined`} onClick={toggleTheme}>
+          <Icon
+            className={`material-symbols-outlined p-4 flex! justify-center items-center border-2 border-${themeColor} rounded-full`}
+            onClick={toggleTheme}
+          >
             {themeColor === "dark"
               ? "partly_cloudy_day"
               : "partly_cloudy_night"}
           </Icon>
         </div>
       </Tooltip>
-      <h1>{themeColor}</h1>
       <Routes>
-        <Route path="/" Component={Root}></Route>
-        <Route path="/home" Component={Home} />
+        <Route path="/" Component={Home}></Route>
+        <Route path="/auth" element={<Auth themeColor={themeColor} />} />
       </Routes>
     </div>
   );
