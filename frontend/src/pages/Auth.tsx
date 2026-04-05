@@ -38,11 +38,31 @@ const Auth = (props: { themeColor: string }) => {
     };
   }
 
+  const customInputTheme = {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: `var(--${props.themeColor}-font-secondary)`,
+      },
+      "&:hover fieldset": {
+        borderColor: `var(--${props.themeColor}-font-secondary)`,
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: `var(--${props.themeColor}-font-secondary)`,
+      },
+    },
+    "& .MuiInputBase-input": {
+      color: `var(--${props.themeColor}-font-primary) !important`,
+    },
+    "& .MuiInputLabel-root": {
+      color: `var(--${props.themeColor}-font-secondary) !important`,
+    },
+  };
+
   return (
     <>
-      <div className="hidden border-(--dark-font-primary) bg-(--light-font-primary)"></div>
+      <div className="hidden border-(--dark-font-primary) border-2 bg-(--light-font-primary)"></div>
       <Box
-        className={`backdrop-blur-2xl size-100 mx-auto rounded-xl border-2 border-[var(--${props.themeColor}-font-primary)] flex-col flex h-fit pb-8`}
+        className={`backdrop-blur-2xl size-100 mx-auto rounded-xl border-2 border-(--${props.themeColor}-font-primary) flex-col flex h-fit pb-8`}
       >
         <Tabs
           sx={{
@@ -67,67 +87,76 @@ const Auth = (props: { themeColor: string }) => {
         <FormControl
           className={`gap-4 items-center text-[var(--${props.themeColor}-font-primary)]`}
         >
-          <TextField
-            id="outlined-name-input"
-            className="w-[80%]"
-            label="Name"
-            type="text"
-            sx={{
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: `var(--${props.themeColor}-font-primary)`,
-                },
-                "&:hover fieldset": {
-                  borderColor: `var(--${props.themeColor}-font-primary)`,
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: `var(--${props.themeColor}-font-primary)`,
-                },
-              },
-              "& .MuiInputLabel-root": {
-                color: `var(--${props.themeColor}-font-primary)`,
-              },
-            }}
-          />
-          <TextField
-            id="outlined-email-input"
-            className="w-[80%]"
-            label="Email"
-            type="email"
-          />
-          <TextField
-            id="outlined-password-input"
-            className="w-[80%]"
-            label="Password"
-            type="password"
-          />
-          <TextField
-            id="outlined-confirm-password-input"
-            className="w-[80%]"
-            label="Confirm Password"
-            type="password"
-          />
-          <Button
-            component="label"
-            role={undefined}
-            variant="contained"
-            tabIndex={-1}
-            startIcon={<CloudUpload />}
-          >
-            Upload Picture
-            <VisuallyHiddenInput
-              type="file"
-              onChange={(event) => console.log(event.target.files)}
-              multiple
-            />
-          </Button>
+          {value === 0 ? (
+            <>
+              <TextField
+                id="outlined-name-input"
+                className="w-[80%]"
+                label="Name"
+                type="text"
+                sx={customInputTheme}
+              />
+              <TextField
+                id="outlined-email-input"
+                className="w-[80%]"
+                label="Email"
+                type="email"
+                sx={customInputTheme}
+              />
+              <TextField
+                id="outlined-password-input"
+                className="w-[80%]"
+                label="Password"
+                type="password"
+                sx={customInputTheme}
+              />
+              <TextField
+                id="outlined-confirm-password-input"
+                className="w-[80%]"
+                label="Confirm Password"
+                type="password"
+                sx={customInputTheme}
+              />
+              <Button
+                component="label"
+                role={undefined}
+                variant="contained"
+                tabIndex={-1}
+                startIcon={<CloudUpload />}
+              >
+                Upload Picture
+                <VisuallyHiddenInput
+                  type="file"
+                  onChange={(event) => console.log(event.target.files)}
+                  multiple
+                />
+              </Button>
+            </>
+          ) : (
+            <>
+              <TextField
+                id="outlined-email-input"
+                className="w-[80%]"
+                label="Email"
+                type="email"
+                sx={customInputTheme}
+              />
+              <TextField
+                id="outlined-password-input"
+                className="w-[80%]"
+                label="Password"
+                type="password"
+                sx={customInputTheme}
+              />
+            </>
+          )}
           <Button
             sx={{ backgroundColor: "red" }}
             className="w-[80%]"
             variant="contained"
             href="#contained-buttons"
           >
-            Sign Up
+            {value === 0 ? "Sign Up" : "Log In"}
           </Button>
         </FormControl>
       </Box>
